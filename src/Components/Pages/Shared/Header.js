@@ -90,10 +90,7 @@ const Header = () => {
                 className="py-2 rounded-3xl px-4 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
                 LogOut
               </Link>
-
             }
-
-
           </div>
         </div>
       </div>

@@ -11,9 +11,9 @@ const Banner = () => {
             <h1
               className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
             >
-              Understand User Flow.
+              Traveling with a companion
 
-              <span className="sm:block"> Increase Conversion. </span>
+              <span className="sm:block pb-4 ">can give you peace of mind </span>
             </h1>
 
             <p className="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
