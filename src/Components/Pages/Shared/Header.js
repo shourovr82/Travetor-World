@@ -14,6 +14,13 @@ const Header = () => {
     { title: "Reviews", path: "/reviews" }
   ]
 
+  const handleLogOut = () => {
+    handleSignOut()
+      .then(result => { })
+      .catch(err => console.log(err))
+  }
+
+
 
   return (
     <nav className="header-bg relative z-10 w-full border-b md:border-0  md:static">
@@ -79,6 +86,7 @@ const Header = () => {
               Login
             </Link>
               : <Link
+                onClick={handleLogOut}
                 className="py-2 rounded-3xl px-4 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
                 LogOut
               </Link>
