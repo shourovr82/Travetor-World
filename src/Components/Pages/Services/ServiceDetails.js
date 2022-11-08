@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { FaStar } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { FaAlignRight, FaArrowAltCircleRight, FaArrowRight, FaBackspace, FaCross, FaLongArrowAltRight, FaPlus, FaStar } from 'react-icons/fa';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../AuthContexts/AuthProvider';
 import Reviews from './Reviews/Reviews';
 
 const ServiceDetails = () => {
-  const [details, setDetails] = useState({});
   const [reviews, setReviews] = useState([]);
+  const { user } = useContext(AuthContext)
   const service = useLoaderData();
   const { Duration, about, picture, price, ratings, title, _id } = service;
 
@@ -16,6 +17,20 @@ const ServiceDetails = () => {
         setReviews(data)
       })
   }, [])
+
+
+
+
+
+  const handleAddReview = event => {
+    event.preventDefault();
+    const form = event.target;
+    const ratings = form.ratings.value;
+    const message = form.message.value;
+    console.log(ratings, message);
+
+  }
+
 
 
 
@@ -79,21 +94,66 @@ const ServiceDetails = () => {
 
               <section className='bg-red-50'>
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
-                  <div className="flex items-center">
-                    <p className="text-3xl font-medium">
-                      3.8
-                      <span className="sr-only"> Average review score </span>
-                    </p>
-                    <div className="ml-4">
-                      <div className="-ml-1 flex">
-                        <FaStar className='text-yellow-400' />
-                        <FaStar className='text-yellow-400' />
-                        <FaStar className='text-yellow-400' />
-                        <FaStar className='text-yellow-400' />
-                        <FaStar className='text-gray-400' />
+
+                  <div className="flex items-center justify-between ">
+
+                    <div className='flex items-center'>
+                      <p className="text-3xl font-medium">
+                        3.8
+                        <span className="sr-only"> Average review score </span>
+                      </p>
+                      <div className="ml-4">
+                        <div className="-ml-1 flex">
+                          <FaStar className='text-yellow-400' />
+                          <FaStar className='text-yellow-400' />
+                          <FaStar className='text-yellow-400' />
+                          <FaStar className='text-yellow-400' />
+                          <FaStar className='text-gray-400' />
+                        </div>
+                        <p className="mt-0.5 text-xs text-gray-500">Based on 48 reviews</p>
                       </div>
-                      <p className="mt-0.5 text-xs text-gray-500">Based on 48 reviews</p>
                     </div>
+
+                    <div>
+                      {user ? <>   <label htmlFor="my-modal-6" className="py-2 rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow">
+                        Add Review <FaPlus />
+                      </label>
+
+                        {/*review modal*/}
+                        <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+                        <div className="modal modal-bottom sm:modal-middle">
+                          <div className="modal-box">
+                            <div className='flex  justify-between items-center pb-3'>     <h3 className="font-bold text-lg">Add a Review</h3>
+                              <label type='submit'
+                                htmlFor="my-modal-6" className="border cursor-pointer px-3 py-2 rounded"><FaBackspace className='text-2xl' /></label></div>
+                            <div>
+                              {/*  add review form */}
+                              <form
+                                onSubmit={handleAddReview}
+                                className='flex flex-col gap-3'>
+
+                                <input type="text"
+                                  name='ratings' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner' placeholder='Your Ratings' required />
+                                <input type="text" required
+                                  name='message' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner'
+                                  placeholder='Type your Review message'
+
+                                />
+                                <div className="modal-action">
+                                  <button className='py-2 rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow' type="submit">Submit</button>
+                                </div>
+                              </form>
+                            </div>
+
+                          </div>
+
+                        </div></> : <>
+                        <h2 className='text-lg border px-3 rounded py-2'>Login to add Review <Link to='/login' className='text-blue-400 text-xl'>Login Now...
+                        </Link></h2>
+
+                      </>}
+                    </div>
+
                   </div>
                   <div className='grid grid-cols-1 gap-3 mt-3'>
 
@@ -102,7 +162,6 @@ const ServiceDetails = () => {
                         key={review._id}
                         review={review}
                       ></Reviews>)
-
                     }
                   </div>
                 </div>
@@ -113,7 +172,7 @@ const ServiceDetails = () => {
 
 
 
-        </div>
+        </div >
       </section >
     </div >
   );

@@ -2,7 +2,6 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const Reviews = ({ review }) => {
-  console.log(review);
   const { message } = review;
   return (
     <div className="mx-auto p-3 rounded-md shadow-lg max-w-screen-xl px-4  border sm:px-6 lg:px-8 w-full">

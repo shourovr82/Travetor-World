@@ -5,14 +5,12 @@ import './Header.css'
 
 const Header = () => {
   const [state, setState] = useState(false);
-
   const { user, handleSignOut } = useContext(AuthContext)
 
   const navigation = [
     { title: "Home", path: "/" },
     { title: "Services", path: "/services" },
     { title: "Reviews", path: "/reviews" },
-
   ]
 
   const handleLogOut = () => {
@@ -51,34 +49,64 @@ const Header = () => {
         </div>
         <div className={`flex-1 justify-self-center pb-3 mt-8 md:hidden md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
           <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+
+
+            <li className="text-white hover:text-indigo-600">
+              <Link to='/'>
+                Home</Link>
+            </li>
+
+            <li className="text-white hover:text-indigo-600">
+              <Link to='/services'>
+                Services</Link>
+            </li>
             {
-              navigation.map((item, idx) => {
-                return (
-                  <li key={idx} className="text-white hover:text-indigo-600">
-                    <Link to={item.path}>
-                      {item.title}
-                    </Link>
-                  </li>
-                )
-              })
+              // user &&
+              <>
+                <li className="text-white hover:text-indigo-600">
+                  <Link to='/myReviews'>
+                    My Reviews</Link>
+                </li>
+              </>
             }
+            <li className="text-white hover:text-indigo-600">
+              <Link to='/blogs'>
+                Blogs</Link>
+            </li>
+
           </ul>
+
         </div>
         <div className="hidden  md:flex gap-5">
 
           <div>
+
+
+
             <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+              <li className="text-white hover:text-indigo-600">
+                <Link to='/'>
+                  Home</Link>
+              </li>
+
+              <li className="text-white hover:text-indigo-600">
+                <Link to='/services'>
+                  Services</Link>
+              </li>
               {
-                navigation.map((item, idx) => {
-                  return (
-                    <li key={idx} className="text-white hover:text-indigo-600">
-                      <Link to={item.path}>
-                        {item.title}
-                      </Link>
-                    </li>
-                  )
-                })
+                // user &&
+                <>
+                  <li className="text-white hover:text-indigo-600">
+                    <Link to='/myReviews'>
+                      My Reviews</Link>
+                  </li>
+                </>
               }
+              <li className="text-white hover:text-indigo-600">
+                <Link to='/blogs'>
+                  Blogs</Link>
+              </li>
+
             </ul>
           </div>
 
