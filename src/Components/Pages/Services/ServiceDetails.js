@@ -1,6 +1,5 @@
-import { async } from '@firebase/util';
 import React, { useContext, useEffect, useState } from 'react';
-import { FaAlignRight, FaArrowAltCircleRight, FaArrowRight, FaBackspace, FaCross, FaLongArrowAltRight, FaPlus, FaStar } from 'react-icons/fa';
+import { FaBackspace, FaPlus, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
 import Reviews from './Reviews/Reviews';
@@ -11,15 +10,16 @@ const ServiceDetails = () => {
   const [review, setReview] = useState({})
   const service = useLoaderData();
   const { Duration, about, picture, price, ratings, title, _id } = service;
-
+  const email = user?.email;
+  const img = user?.photoURL;
+  const authorName = user?.displayName;
   useEffect(() => {
-    fetch('http://localhost:5000/reviews')
+    fetch(`http://localhost:5000/reviews?serviceName=${title}`)
       .then(res => res.json())
       .then(data => {
         setReviews(data)
       })
-  }, [])
-
+  }, [title])
 
 
 
@@ -35,23 +35,20 @@ const ServiceDetails = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        if (data.acknowledged) {
-          event.target.reset();
-        }
-
+        setReviews([data, ...reviews])
+        event.target.reset();
       })
   }
-  const email = user?.email;
 
 
   const handleInputBlur = (event) => {
     const field = event.target.name;
     const value = event.target.value;
-    const newReview = { ...review, email }
+    const newReview = { ...review, email, title, img, authorName }
     newReview[field] = value;
+    const id = 'id';
+    newReview[id] = _id;
     setReview(newReview);
-    console.log(newReview);
   }
 
 
@@ -114,32 +111,46 @@ const ServiceDetails = () => {
             <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
               <h2 className='text-3xl text-center font-bold '>Customer Reviews...</h2>
 
-              <section className='bg-red-50'>
+              <section className='bg-blue-50 rounded-md shadow-[#2e0a7217] shadow-lg'>
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
 
                   <div className="flex items-center justify-between ">
-
-                    <div className='flex items-center'>
-                      <p className="text-3xl font-medium">
-                        3.8
-                        <span className="sr-only"> Average review score </span>
-                      </p>
-                      <div className="ml-4">
-                        <div className="-ml-1 flex">
-                          <FaStar className='text-yellow-400' />
-                          <FaStar className='text-yellow-400' />
-                          <FaStar className='text-yellow-400' />
-                          <FaStar className='text-yellow-400' />
-                          <FaStar className='text-gray-400' />
+                    {
+                      reviews.length ? <>
+                        <div className='flex items-center'>
+                          <p className="text-3xl font-medium">
+                            4.5
+                            <span className="sr-only"> Average review score </span>
+                          </p>
+                          <div className="ml-4">
+                            <div className="-ml-1 flex">
+                              <FaStar className='text-yellow-400' />
+                              <FaStar className='text-yellow-400' />
+                              <FaStar className='text-yellow-400' />
+                              <FaStar className='text-yellow-400' />
+                              <FaStar className='text-gray-400' />
+                            </div>
+                            <p className="mt-0.5 text-xs text-gray-500">Based on {reviews.length} reviews</p>
+                          </div>
                         </div>
-                        <p className="mt-0.5 text-xs text-gray-500">Based on 48 reviews</p>
-                      </div>
-                    </div>
+                      </>
+                        :
+                        <>
+                          <h2 className='text-xl font-semibold'>No Reviws Found On this Service !</h2>
+                        </>
+                    }
+
+
+
+
+                    {/* The button to open modal */}
+
 
                     <div>
-                      {user ? <>   <label htmlFor="my-modal-6" className="py-2 rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow">
-                        Add Review <FaPlus />
-                      </label>
+                      {user ? <>
+                        <label htmlFor="my-modal-6" className="py-2 justify-end rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow cursor-pointer">    Add Review <FaPlus /></label>
+
+
 
                         {/*review modal*/}
                         <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -163,7 +174,8 @@ const ServiceDetails = () => {
 
                                 />
                                 <div className="modal-action">
-                                  <button className='py-2 rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow' type="submit">Submit</button>
+                                  <button className='py-2 rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow'
+                                    type="submit">Submit</button>
                                 </div>
                               </form>
                             </div>
@@ -180,11 +192,14 @@ const ServiceDetails = () => {
                   </div>
                   <div className='grid grid-cols-1 gap-5 mt-3'>
 
-                    {
+                    {reviews.length ?
                       reviews.map(review => <Reviews
                         key={review._id}
                         review={review}
                       ></Reviews>)
+
+                      :
+                      <></>
                     }
                   </div>
                 </div>

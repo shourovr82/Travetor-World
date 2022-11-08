@@ -31,15 +31,15 @@ const Services = () => {
             Blogs that are loved by the community. Updated every hour.
           </p>
         </div>
-        <div className="mt-12  grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12  grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 
 
 
           {
             services.map((service, key) => (
 
-              <div key={key} className="card card-compact w-96 h-96 bg-base-100 shadow-xl">
-                <figure><img src={service.picture} alt="Shoes" /></figure>
+              <div key={key} className="card card-compact  bg-base-100 shadow-xl">
+                <figure><img className='h-[250px] w-full' src={service.picture} alt="Shoes" /></figure>
                 <div className="card-body">
                   <h2 className="card-title">{service.title}!</h2>
                   <p>{service.about ? service.about.slice(0, 100) : service.about}</p>
@@ -53,7 +53,7 @@ const Services = () => {
                       <p className='flex items-center gap-2'>Ratings : {service.ratings} <FaStar className='text-lg text-yellow-500' /></p>
                     </div>
                     <div>
-                      <Link to={`${service._id}`}>
+                      <Link to={`/services/${service._id}`}>
                         <button className="btn btn-primary">See Details</button>
                       </Link>
 
