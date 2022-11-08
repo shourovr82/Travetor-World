@@ -11,7 +11,8 @@ const Header = () => {
   const navigation = [
     { title: "Home", path: "/" },
     { title: "Services", path: "/services" },
-    { title: "Reviews", path: "/reviews" }
+    { title: "Reviews", path: "/reviews" },
+
   ]
 
   const handleLogOut = () => {
