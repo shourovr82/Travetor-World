@@ -27,10 +27,11 @@ const Login = () => {
 
   }
 
-
   const handleGoogleLogin = () => {
     loginWithGoogle()
-      .then(res => {
+      .then(result => {
+        const user = result.user;
+        console.log(user);
         navigate(from, { replace: true });
       })
       .catch(e => console.log(e))

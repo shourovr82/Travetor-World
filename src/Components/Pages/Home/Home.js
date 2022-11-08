@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Banner from './Banner';
 import HomeServices from './HomeServices';
 
@@ -8,19 +9,22 @@ const Home = () => {
       <Banner></Banner>
       <HomeServices></HomeServices>
       <div className='flex justify-center py-10'>
-        <a
+        <button
           className="group relative inline-block overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring"
           href="/download"
         >
           <span
             className="absolute inset-x-0 bottom-0 h-[2px] bg-indigo-600 transition-all group-hover:h-full group-active:bg-indigo-500"
           ></span>
-          <span
+
+          <Link to='/services'
             className="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white"
           >
+
+
             See All Services
-          </span>
-        </a>
+          </Link>
+        </button>
 
       </div>
       <div>

@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import React, { useContext, useEffect, useState } from 'react';
 import { FaAlignRight, FaArrowAltCircleRight, FaArrowRight, FaBackspace, FaCross, FaLongArrowAltRight, FaPlus, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
@@ -6,7 +7,8 @@ import Reviews from './Reviews/Reviews';
 
 const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  const [review, setReview] = useState({})
   const service = useLoaderData();
   const { Duration, about, picture, price, ratings, title, _id } = service;
 
@@ -24,13 +26,33 @@ const ServiceDetails = () => {
 
   const handleAddReview = event => {
     event.preventDefault();
-    const form = event.target;
-    const ratings = form.ratings.value;
-    const message = form.message.value;
-    console.log(ratings, message);
+    fetch('http://localhost:5000/postReview', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(review)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.acknowledged) {
+          event.target.reset();
+        }
 
+      })
   }
+  const email = user?.email;
 
+
+  const handleInputBlur = (event) => {
+    const field = event.target.name;
+    const value = event.target.value;
+    const newReview = { ...review, email }
+    newReview[field] = value;
+    setReview(newReview);
+    console.log(newReview);
+  }
 
 
 
@@ -132,9 +154,10 @@ const ServiceDetails = () => {
                                 onSubmit={handleAddReview}
                                 className='flex flex-col gap-3'>
 
-                                <input type="text"
+                                <input onBlur={handleInputBlur} type="text"
                                   name='ratings' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner' placeholder='Your Ratings' required />
-                                <input type="text" required
+                                <input
+                                  onBlur={handleInputBlur} type="text" required
                                   name='message' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner'
                                   placeholder='Type your Review message'
 
@@ -155,7 +178,7 @@ const ServiceDetails = () => {
                     </div>
 
                   </div>
-                  <div className='grid grid-cols-1 gap-3 mt-3'>
+                  <div className='grid grid-cols-1 gap-5 mt-3'>
 
                     {
                       reviews.map(review => <Reviews
