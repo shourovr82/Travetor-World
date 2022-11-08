@@ -71,7 +71,7 @@ const MyReviewItems = ({ review }) => {
         </blockquote>
         <div className='flex flex-col gap-3 items-center'>
 
-          <label htmlhtmlfor="my-modal-6" className="py-2 font-bold rounded-3xl px-6 bg-white  hover:text-white hover:border-[#fff0] border-[#9a06d467] hover:bg-[#3848f1] flex  gap-2 items-center btn-outline btn shadow">
+          <label htmlFor="my-modal-6" className="py-2 font-bold rounded-3xl px-6 bg-white  hover:text-white hover:border-[#fff0] border-[#9a06d467] hover:bg-[#3848f1] flex  gap-2 items-center btn-outline btn shadow">
             Edit  <FaEdit className='text-xl' />
           </label>
           <div>
@@ -81,7 +81,7 @@ const MyReviewItems = ({ review }) => {
               <div className="modal-box">
                 <div className='flex  justify-between items-center pb-3'>     <h3 className="font-bold text-lg">Update Review</h3>
                   <label type='submit'
-                    htmlhtmlfor="my-modal-6" className="border cursor-pointer px-3 py-2 rounded"><FaBackspace className='text-2xl' /></label></div>
+                    htmlFor="my-modal-6" className="border cursor-pointer px-3 py-2 rounded"><FaBackspace className='text-2xl' /></label></div>
                 <div>
                   {/*  add review form */}
                   <form

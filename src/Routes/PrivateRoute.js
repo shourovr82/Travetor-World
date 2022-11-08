@@ -7,7 +7,11 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    return <p>Loading</p>
+    return (
+      <div className='flex justify-center py-10'>
+        <progress className="progress w-80 "></progress>
+      </div>
+    )
   }
   if (user && user?.uid) {
     return children;

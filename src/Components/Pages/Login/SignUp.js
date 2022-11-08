@@ -10,15 +10,13 @@ const SignUp = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
 
-
-
   const handleCreateAccount = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = (form.firstName.value) + ' ' + (form.lastName.value);
-
     const email = form.email.value;
     const password = form.password.value;
+
     handleRegister(email, password)
       .then(result => {
         form.reset();
@@ -38,8 +36,6 @@ const SignUp = () => {
       })
       .catch(e => console.log(e))
   }
-
-
 
 
   return (
