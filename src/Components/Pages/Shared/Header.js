@@ -82,7 +82,6 @@ const Header = () => {
           <div>
 
 
-
             <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white hover:text-indigo-600">
                 <Link to='/'>
@@ -93,15 +92,18 @@ const Header = () => {
                 <Link to='/services'>
                   Services</Link>
               </li>
-              {
-                // user &&
-                <>
-                  <li className="text-white hover:text-indigo-600">
-                    <Link to='/myReviews'>
-                      My Reviews</Link>
-                  </li>
-                </>
-              }
+
+
+              <li className="text-white hover:text-indigo-600">
+                <Link to='/addservice'>
+                  Add Service</Link>
+              </li>
+
+              <li className="text-white hover:text-indigo-600">
+                <Link to='/myReviews'>
+                  My Reviews</Link>
+              </li>
+
               <li className="text-white hover:text-indigo-600">
                 <Link to='/blogs'>
                   Blogs</Link>

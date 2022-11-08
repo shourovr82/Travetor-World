@@ -2,7 +2,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const Reviews = ({ review }) => {
-  const { message, authorName, img, title } = review;
+  const { message, authorName, ratings, img, title } = review;
   console.log(review);
   return (
     <div className="mx-auto p-3 rounded-md shadow-lg max-w-screen-xl px-4  border sm:px-6 lg:px-8 w-full">
@@ -14,12 +14,18 @@ const Reviews = ({ review }) => {
         <blockquote>
           <div>
             <header className="sm:flex sm:items-center">
-              <div className="-ml-1 flex">
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-gray-400' />
+              <div className="-ml-1 flex items-center gap-3">
+                <div className='flex'>
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-gray-400' />
+                </div>
+                <div>
+                  <p className='text-sm font-semibold'>{ratings}</p>
+                </div>
+
               </div>
             </header>
             <p className="mt-2 text-gray-700">

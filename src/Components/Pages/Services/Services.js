@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaArrowRight, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -47,16 +47,15 @@ const Services = () => {
 
                   <div className="card-actions items-center justify-between ">
                     <div>
-                      <p>Price : <span className='text-lg font-bold'>{service.price}</span></p>
+                      <p className='border px-2 rounded bg-blue-100'>Price : <span className='text-lg font-bold'>${service.price}</span></p>
                     </div>
                     <div>
                       <p className='flex items-center gap-2'>Ratings : {service.ratings} <FaStar className='text-lg text-yellow-500' /></p>
                     </div>
                     <div>
                       <Link to={`/services/${service._id}`}>
-                        <button className="btn btn-primary">See Details</button>
+                        <button className="py-2 rounded-3xl px-5 text-white bg-[#3848f1] hover:bg-indigo-700 flex  items-center  gap-2 shadow">See Details <FaArrowRight /> </button>
                       </Link>
-
                     </div>
 
                   </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FaBackspace, FaPlus, FaStar } from 'react-icons/fa';
+import { FaArrowRight, FaBackspace, FaPlus, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
 import Reviews from './Reviews/Reviews';
@@ -94,7 +94,7 @@ const ServiceDetails = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-2xl font-bold">{price}</p>
+                <p className="text-2xl font-bold">${price}</p>
               </div>
               <div>
                 <div className="prose max-w-none">
@@ -136,7 +136,7 @@ const ServiceDetails = () => {
                       </>
                         :
                         <>
-                          <h2 className='text-xl font-semibold'>No Reviws Found On this Service !</h2>
+                          <h2 className='text-lg font-semibold'>No Reviews Found On this Service !</h2>
                         </>
                     }
 
@@ -183,7 +183,7 @@ const ServiceDetails = () => {
                           </div>
 
                         </div></> : <>
-                        <h2 className='text-lg border px-3 rounded py-2'>Login to add Review <Link to='/login' className='text-blue-400 text-xl'>Login Now...
+                        <h2 className='text-lg border px-3 rounded py-2'>Login to add Review <br /> <Link to='/login' className='text-blue-400 text-lg flex  gap-2 items-center  font-semibold'>Login Here  <FaArrowRight className='text-sm mt-1' />
                         </Link></h2>
 
                       </>}
@@ -206,7 +206,7 @@ const ServiceDetails = () => {
               </section>
 
             </div>
-          </div>
+          </div >
 
 
 
