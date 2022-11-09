@@ -5,9 +5,8 @@ import { AuthContext } from '../../../../AuthContexts/AuthProvider';
 const MyReviewItems = ({ review }) => {
   const [newReview, setNewReview] = useState({})
   const { user } = useContext(AuthContext);
-  const { message } = review;
+  const { message, title, ratings, img, authorName } = review;
   const email = user?.email;
-
   const handleDeleteReview = (details) => {
     fetch(`http://localhost:5000/deleteReview/${details._id}`, {
       method: 'DELETE',
@@ -45,9 +44,13 @@ const MyReviewItems = ({ review }) => {
 
 
   return (
-    <div className="mx-auto bg-blue-50 pb-3 rounded-md shadow-lg max-w-screen-xl px-4  border border-[#2812f30c] sm:px-2 lg:px-8 w-full">
+    <div className="mx-auto py-5 bg-blue-50 pb-3 rounded-md shadow-lg max-w-screen-xl px-4  border border-[#2812f30c] sm:px-2 lg:px-8 w-full">
+      <h2 className='text-sm text-gray-400'>Service  : <span className='font-semibold'>
+        {title}
+      </span></h2>
+      <div className=" gap-x-16 flex justify-between items-center gap-y-12 lg:grid-cols-2">
 
-      <div className="py-6  gap-x-16 flex justify-between items-center gap-y-12 lg:grid-cols-2">
+
         <blockquote>
           <div>
             <header className="sm:flex sm:items-center">
@@ -59,19 +62,24 @@ const MyReviewItems = ({ review }) => {
                 <FaStar className='text-gray-400' />
               </div>
             </header>
-            <p className="mt-2 text-gray-700">
+            <p className="mt-2 w-4/5 text-gray-700">
               {message}
             </p>
           </div>
           <div></div>
 
-          <footer className="mt-4">
-            <p className="text-xs text-gray-500"> shafin 12th January, 2024</p>
+
+          <footer className="mt-4 flex justify-between items-center gap-3">
+            <div className='flex items-center gap-3'>
+              <img className='w-[30px] rounded-full' src={img ? img : 'https://i.ibb.co/9pTrT1y/images.png'} alt="" />
+              <p className="text-xs text-gray-500">Author Name : {authorName}</p>
+            </div>
+            <p className='text-xs text-gray-400'>12th January, 2024</p>
           </footer>
         </blockquote>
-        <div className='flex flex-col gap-3 items-center'>
+        <div className='flex flex-col gap-3  items-center'>
 
-          <label htmlFor="my-modal-6" className="py-2 font-bold rounded-3xl px-6 bg-white  hover:text-white hover:border-[#fff0] border-[#9a06d467] hover:bg-[#3848f1] flex  gap-2 items-center btn-outline btn shadow">
+          <label htmlFor="my-modal-6" className="py-2  font-bold rounded-3xl px-10 bg-white  hover:text-white hover:border-[#fff0] border-[#9a06d467] hover:bg-[#3848f1] flex  gap-2 items-center btn-outline btn shadow">
             Edit  <FaEdit className='text-xl' />
           </label>
           <div>

@@ -7,7 +7,7 @@ import Reviews from './Reviews/Reviews';
 const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
-  const [review, setReview] = useState({})
+  const [review, setReview] = useState({});
   const service = useLoaderData();
   const { Duration, about, picture, price, ratings, title, _id } = service;
   const email = user?.email;

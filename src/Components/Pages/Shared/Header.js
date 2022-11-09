@@ -93,16 +93,23 @@ const Header = () => {
                   Services</Link>
               </li>
 
+              {user &&
+                <>
 
-              <li className="text-white hover:text-indigo-600">
-                <Link to='/addservice'>
-                  Add Service</Link>
-              </li>
+                  <li className="text-white hover:text-indigo-600">
+                    <Link to='/addservice'>
+                      Add Service</Link>
+                  </li>
 
-              <li className="text-white hover:text-indigo-600">
-                <Link to='/myReviews'>
-                  My Reviews</Link>
-              </li>
+
+                  <li className="text-white hover:text-indigo-600">
+                    <Link to='/myReviews'>
+                      My Reviews</Link>
+                  </li>
+                </>
+              }
+
+
 
               <li className="text-white hover:text-indigo-600">
                 <Link to='/blogs'>

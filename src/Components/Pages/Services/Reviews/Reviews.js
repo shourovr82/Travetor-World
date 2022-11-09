@@ -3,7 +3,6 @@ import { FaStar } from 'react-icons/fa';
 
 const Reviews = ({ review }) => {
   const { message, authorName, ratings, img, title } = review;
-  console.log(review);
   return (
     <div className="mx-auto p-3 rounded-md shadow-lg max-w-screen-xl px-4  border sm:px-6 lg:px-8 w-full">
 
@@ -27,12 +26,14 @@ const Reviews = ({ review }) => {
                 </div>
 
               </div>
+              <p className="mt-2 text-gray-700 ">
+                {message}
+              </p>
             </header>
-            <p className="mt-2 text-gray-700">
-              {message}
-            </p>
           </div>
-          <div></div>
+          <div>
+
+          </div>
 
           <footer className="mt-4 flex justify-between">
             <div className='flex items-center gap-3'>

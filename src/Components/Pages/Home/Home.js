@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaArrowRight, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
 
@@ -50,7 +50,7 @@ const Home = () => {
                     </div>
                     <div>
                       <Link to={`/services/${service._id}`}>
-                        <button className="btn btn-primary">See Details</button>
+                        <button className="py-2 rounded-3xl px-5 text-white bg-[#3848f1] hover:bg-indigo-700 flex  items-center  gap-2 shadow">See Details <FaArrowRight /> </button>
                       </Link>
                     </div>
 
@@ -72,11 +72,13 @@ const Home = () => {
             href="/download"
           >
             <span
-              className="absolute inset-x-0 bottom-0 h-[2px] bg-indigo-600 transition-all group-hover:h-full group-active:bg-indigo-500"
+              className="absolute inset-x-0 bottom-0 h-[2px] bg-[#3848f1] transition-all group-hover:h-full group-active:bg-indigo-500"
             ></span>
 
             <Link to='/services'
-              className="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white"
+              className="relative text-sm font-medium  text-blue-600
+
+              transition-colors group-hover:text-white"
             >
 
 
