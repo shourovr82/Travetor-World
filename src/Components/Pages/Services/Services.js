@@ -3,7 +3,8 @@ import { FaArrowRight, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useSiteTitle from '../../../Hooks/useSiteTitle';
 import spinner from '../../../Assets/spinner.svg'
-
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 const Services = () => {
   const [services, setServices] = useState([]);
   useSiteTitle('Services');
@@ -53,7 +54,16 @@ const Services = () => {
             services.map((service, key) => (
 
               <div key={key} className="card card-compact  bg-base-100 shadow-xl">
-                <figure><img className='h-[250px] w-full' src={service.picture} alt="Shoes" /></figure>
+                <figure>
+                  {/* react photo view method */}
+                  <PhotoProvider>
+                    <PhotoView src={service.picture} >
+                      <img className='h-[250px] w-full' src={service.picture} alt="Shoes" />
+                    </PhotoView>
+                  </PhotoProvider>
+
+
+                </figure>
                 <div className="card-body">
                   <h2 className="card-title">{service.title}!</h2>
                   <p>{service.about ? service.about.slice(0, 100) : service.about}</p>

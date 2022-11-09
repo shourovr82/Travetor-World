@@ -17,7 +17,6 @@ const MyReviewItems = ({ review }) => {
 
   const handleUpdateReview = event => {
     event.preventDefault();
-    console.log(newReview);
     const url = `http://localhost:5000/userReview/${newReview._id}`
     console.log(url);
     fetch(url, {

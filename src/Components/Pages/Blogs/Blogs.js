@@ -20,7 +20,7 @@ const Blogs = () => {
             {/*  first question */}
 
             <div className="p-4 md:w-4/5 mx-auto">
-              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-8 flex-col">
+              <div className="flex rounded-2xl py-10 h-full header-bg blog-card  text-[#444] p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@ const Blogs = () => {
             {/* second  question */}
 
             <div className="p-4 md:w-4/5 mx-auto">
-              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-5 md:p-8 flex-col">
+              <div className="flex rounded-2xl py-10 h-full header-bg blog-card  text-[#444] p-5 md:p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
                     <FaUserSecret />
@@ -56,7 +56,7 @@ const Blogs = () => {
             </div>
 
             <div className="p-4 md:w-4/5 mx-auto">
-              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-5 md:p-8 flex-col">
+              <div className="flex rounded-2xl py-10 h-full header-bg blog-card  text-[#444] p-5 md:p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
                     < FaJs className='text-lg' />
@@ -71,7 +71,7 @@ const Blogs = () => {
             </div>
 
             <div className="p-4 md:w-4/5 mx-auto">
-              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-5 md:p-8 flex-col">
+              <div className="flex rounded-2xl py-10 h-full header-bg blog-card  text-[#444] p-5 md:p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
                     <FaNode className='text-2xl' />

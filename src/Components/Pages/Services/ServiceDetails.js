@@ -15,11 +15,15 @@ const ServiceDetails = () => {
   const img = user?.photoURL;
   const authorName = user?.displayName;
   useSiteTitle('Service Details')
+
+
+
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?serviceName=${title}`)
       .then(res => res.json())
       .then(data => {
         setReviews(data)
+        console.log(data);
       })
   }, [title])
 
@@ -46,10 +50,13 @@ const ServiceDetails = () => {
   const handleInputBlur = (event) => {
     const field = event.target.name;
     const value = event.target.value;
+    const newDate = new Date().toLocaleString();
     const newReview = { ...review, email, title, img, authorName }
     newReview[field] = value;
     const id = 'id';
+    const date = 'date';
     newReview[id] = _id;
+    newReview[date] = newDate;
     setReview(newReview);
   }
 
@@ -152,7 +159,6 @@ const ServiceDetails = () => {
                     <div>
                       {user ? <>
                         <label htmlFor="my-modal-6" className="py-2 justify-end rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow cursor-pointer">    Add Review <FaPlus /></label>
-
 
 
                         {/*review modal*/}

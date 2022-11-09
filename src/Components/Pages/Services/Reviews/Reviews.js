@@ -2,7 +2,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const Reviews = ({ review }) => {
-  const { message, authorName, ratings, img, title } = review;
+  const { message, authorName, ratings, img, title, date } = review;
   return (
     <div className="mx-auto p-3 rounded-md shadow-lg max-w-screen-xl md:px-4  border sm:px-6 lg:px-8 w-full">
 
@@ -41,8 +41,7 @@ const Reviews = ({ review }) => {
               </div>
 
             </div>
-            <p className='text-xs text-end mt-2  text-gray-400'>12th January, 2024</p>
-
+            <p className='text-xs text-end mt-2  text-gray-400'>{date}</p>
           </footer>
         </blockquote>
       </div>

@@ -4,7 +4,7 @@ import { FaFirefoxBrowser, FaGithub, FaGoogle, FaLocationArrow, FaPhoneAlt } fro
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
 import useSiteTitle from '../../../Hooks/useSiteTitle';
 import spinner from '../../../Assets/spinner.svg'
-import toast, { ToastBar, Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -21,14 +21,31 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    //  handle login with email and password
+
     handleLogin(email, password)
       .then(result => {
         const user = result?.user;
+        const currentUser = {
+          email: user.email
+        };
         form.reset();
-        console.log(user);
-        setLoading(false)
-        toast.success(`Welcome ${user?.displayName ? user.displayName : ''} , You have Successfully Logged In`)
-        navigate(from, { replace: true });
+        // jwt token
+        fetch('http://localhost:5000/jwt', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+        })
+          .then(res => res.json())
+          .then(data => {
+            // set token to localstorage
+            localStorage.setItem('Travetor Token', data.token)
+            setLoading(false)
+            toast.success(`Welcome ${user?.displayName ? user.displayName : ''} , You have Successfully Logged In`)
+            navigate(from, { replace: true });
+          })
       })
       .catch(e => {
         console.log(e)
@@ -42,11 +59,27 @@ const Login = () => {
     loginWithGoogle()
       .then(result => {
         const user = result.user;
-        toast.success(`Welcome ${user?.displayName} , You have Successfully Logged In`)
-        setLoading(false)
+        const currentUser = {
+          email: user.email
+        }
 
-        navigate(from, { replace: true });
+        fetch('http://localhost:5000/jwt', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+        })
+          .then(res => res.json())
+          .then(data => {
+            // set token to localstorage
+            localStorage.setItem('Travetor Token', data.token)
+            setLoading(false)
+            toast.success(`Welcome ${user?.displayName ? user.displayName : ''} , You have Successfully Logged In`)
+            navigate(from, { replace: true });
+          })
       })
+
       .catch(e => {
         console.log(e)
         toast.error(e.message.slice(15, 100))

@@ -5,18 +5,26 @@ import MyReviewItems from './MyReviewItems';
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { user, handleSignOut } = useContext(AuthContext);
   useSiteTitle('My Reviews')
 
   useEffect(() => {
-    const url = `http://localhost:5000/myreview?email=${user?.email}`;
-    fetch(url)
-      .then(res => res.json())
+    fetch(`http://localhost:5000/myreview?email=${user?.email}`, {
+      headers: {
+        authorization: `Travetor ${localStorage.getItem('Travetor Token')}`
+      }
+    })
+      .then(res => {
+        if (res.status === 401 || res.status === 403) {
+          handleSignOut();
+        }
+        return res.json()
+      })
       .then(data => {
+        console.log(data);
         setReviews(data)
       })
-  }, [user?.email, reviews])
-
+  }, [user?.email])
 
 
   return (
