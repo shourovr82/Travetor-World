@@ -1,8 +1,11 @@
 import React from 'react';
 import { FaJs, FaNode, FaUserSecret } from 'react-icons/fa';
+import useSiteTitle from '../../../Hooks/useSiteTitle';
 import './Blogs.css'
 
 const Blogs = () => {
+  useSiteTitle('Blogs')
+
   return (
     <div className='w-full '>
       <section className="text-gray-600 body-font">
@@ -16,7 +19,7 @@ const Blogs = () => {
             {/* blogs sections */}
             {/*  first question */}
 
-            <div className="p-4 w-4/5 mx-auto">
+            <div className="p-4 md:w-4/5 mx-auto">
               <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
@@ -28,14 +31,13 @@ const Blogs = () => {
                 </div>
                 <div className="flex-grow">
                   <p className="leading-relaxed text-white font-mono">NoSQL (“non SQL” or “not only SQL”) databases were developed in the late 2000s with a focus on scaling, fast queries, allowing for frequent application changes, and making programming simpler for developers. Relational databases accessed with SQL (Structured Query Language) were developed in the 1970s with a focus on reducing data duplication as storage was much more costly than developer time. SQL databases tend to have rigid, complex, tabular schemas and typically require expensive vertical scaling.</p>
-
                 </div>
               </div>
             </div>
             {/* second  question */}
 
-            <div className="p-4 w-4/5 mx-auto">
-              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-8 flex-col">
+            <div className="p-4 md:w-4/5 mx-auto">
+              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-5 md:p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
                     <FaUserSecret />
@@ -53,8 +55,8 @@ const Blogs = () => {
               </div>
             </div>
 
-            <div className="p-4 w-4/5 mx-auto">
-              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-8 flex-col">
+            <div className="p-4 md:w-4/5 mx-auto">
+              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-5 md:p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
                     < FaJs className='text-lg' />
@@ -68,8 +70,8 @@ const Blogs = () => {
               </div>
             </div>
 
-            <div className="p-4 w-4/5 mx-auto">
-              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-8 flex-col">
+            <div className="p-4 md:w-4/5 mx-auto">
+              <div className="flex rounded-2xl py-10 h-full bg-blue-700 blog-card  text-[#444] p-5 md:p-8 flex-col">
                 <div className="flex items-center mb-3">
                   <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-transparent border text-white flex-shrink-0">
                     <FaNode className='text-2xl' />
@@ -88,22 +90,22 @@ const Blogs = () => {
             </div>
 
 
-            <section class="text-gray-600 body-font">
-              <div class="container px-5 py-24 mx-auto">
-                <div class="flex flex-col text-center w-full mb-12">
-                  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Subscribe to get Latest Update of upcoming Interview  Questions and my Services</h1>
-                  <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep.</p>
+            <section className="text-gray-600 body-font">
+              <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-col text-center w-full mb-12">
+                  <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Subscribe to get Latest Update of upcoming Interview  Questions and my Services</h1>
+                  <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep.</p>
                 </div>
-                <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
-                  <div class="relative flex-grow w-full">
-                    <label for="full-name" class="leading-7 text-sm text-gray-600">Full Name</label>
-                    <input type="text" id="full-name" name="full-name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+                  <div className="relative flex-grow w-full">
+                    <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                   </div>
-                  <div class="relative flex-grow w-full">
-                    <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
-                    <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                  <div className="relative flex-grow w-full">
+                    <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
+                    <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                   </div>
-                  <button class="rounded-xl text-white bg-blue-700 border-0 py-2 px-8 focus:outline-none hover:bg-blue-800  text-lg">Subscribe</button>
+                  <button className="rounded-xl text-white bg-blue-700 border-0 py-2 px-8 focus:outline-none hover:bg-blue-800  text-lg">Subscribe</button>
                 </div>
               </div>
             </section>

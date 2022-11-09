@@ -48,8 +48,7 @@ const MyReviewItems = ({ review }) => {
       <h2 className='text-sm text-gray-400'>Service  : <span className='font-semibold'>
         {title}
       </span></h2>
-      <div className=" gap-x-16 flex justify-between items-center gap-y-12 lg:grid-cols-2">
-
+      <div className=" gap-x-16 md:flex grid  justify-between items-center md:gap-y-12 gap-y-5 lg:grid-cols-2">
 
         <blockquote>
           <div>
@@ -77,10 +76,12 @@ const MyReviewItems = ({ review }) => {
             <p className='text-xs text-gray-400'>12th January, 2024</p>
           </footer>
         </blockquote>
-        <div className='flex flex-col gap-3  items-center'>
+        <div className='flex md:flex-col  justify-center gap-3  items-center'>
 
-          <label htmlFor="my-modal-6" className="py-2  font-bold rounded-3xl px-10 bg-white  hover:text-white hover:border-[#fff0] border-[#9a06d467] hover:bg-[#3848f1] flex  gap-2 items-center btn-outline btn shadow">
-            Edit  <FaEdit className='text-xl' />
+          {/* update or edit button */}
+
+          <label title='Edit Review' htmlFor="my-modal-6" className="py-2  font-bold rounded-3xl px-4 bg-white  hover:text-white hover:border-[#fff0] border-[#1b70dfb0] hover:bg-[#3848f1]   items-center btn-outline btn shadow">
+            <FaEdit className='text-xl' />
           </label>
           <div>
             {/*review modal*/}
@@ -109,19 +110,18 @@ const MyReviewItems = ({ review }) => {
                     </div>
                   </form>
                 </div>
-
               </div>
+            </div>
 
+            <div>
+              <button
+                onClick={() => handleDeleteReview(review)}
+                className="btn btn-circle btn-outline  hover:border-[#fff0] border-[#1b70dfb0] hover:bg-[#3848f1] ">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
             </div>
 
 
-
-            <button
-              onClick={() => handleDeleteReview(review)}
-
-              className="btn btn-circle btn-outline  hover:border-[#fff0] border-[#9a06d467] hover:bg-[#3848f1] ">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
           </div>
         </div>
       </div >

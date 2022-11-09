@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useSiteTitle from '../../../Hooks/useSiteTitle';
+import spinner from '../../../Assets/spinner.svg'
 
 const Services = () => {
   const [services, setServices] = useState([]);
+  useSiteTitle('Services');
+
+
+
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then(res => res.json())
@@ -22,6 +28,8 @@ const Services = () => {
   return (
     <div>
       <section className="mt-12 mx-auto px-4 max-w-screen-xl lg:px-8">
+
+
         <div className="text-center">
           <h1 className="text-3xl text-gray-800 font-semibold">
             Our Services
@@ -30,6 +38,13 @@ const Services = () => {
             Blogs that are loved by the community. Updated every hour.
           </p>
         </div>
+        {
+          services.length === 0 && <>
+            <div className='flex justify-center'>
+              <img src={spinner} alt="" />
+            </div>
+          </>
+        }
         <div className="mt-12  grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 
 

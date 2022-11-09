@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
 import './Header.css'
+import siteLogo from '../../../Assets/sitelogo.png'
 
 const Header = () => {
   const [state, setState] = useState(false);
@@ -24,12 +25,13 @@ const Header = () => {
   return (
     <nav className="header-bg relative z-10 w-full border-b md:border-0  md:static">
       <div className="items-center md:justify-between  px-4 max-w-screen-xl mx-auto md:flex md:px-8">
-        <div className="flex items-center justify-between py-3 md:py-4 md:block">
-          <Link to='/' className='text-2xl font-semibold text-blue-300'>
-            TRAVETOR
+        <div className="flex items-center justify-between py-3 md:py-2 md:block">
+          <Link to='/' className=''>
+            <img className='w-32' src={siteLogo} alt="" />
           </Link>
+
           <div className="md:hidden">
-            <button className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
+            <button className="text-white outline-none p-2 rounded-md focus:border-gray-400 focus:border"
               onClick={() => setState(!state)}
             >
               {
@@ -47,10 +49,14 @@ const Header = () => {
 
           </div>
         </div>
+
+        {/* for mobile device responsive navbar items */}
+
         <div className={`flex-1 justify-self-center pb-3 mt-8 md:hidden md:pb-0 md:mt-0 ${state ? 'block' : 'hidden'}`}>
-          <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
 
 
+
+          <ul className="justify-center flex flex-col pb-10 items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
             <li className="text-white hover:text-indigo-600">
               <Link to='/'>
                 Home</Link>
@@ -60,28 +66,48 @@ const Header = () => {
               <Link to='/services'>
                 Services</Link>
             </li>
-            {
-              // user &&
+
+            {user &&
               <>
+
+                <li className="text-white hover:text-indigo-600">
+                  <Link to='/addservice'>
+                    Add Service</Link>
+                </li>
+
+
                 <li className="text-white hover:text-indigo-600">
                   <Link to='/myReviews'>
                     My Reviews</Link>
                 </li>
               </>
             }
+
+
+
             <li className="text-white hover:text-indigo-600">
               <Link to='/blogs'>
                 Blogs</Link>
             </li>
 
+            {user === null ? <Link to='/login' className="py-2 rounded-3xl px-5 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
+              Login
+            </Link>
+              : <Link
+                onClick={handleLogOut}
+                className="py-2 rounded-3xl px-4 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
+                LogOut
+              </Link>
+            }
+
           </ul>
-
         </div>
+
+        {/* for large device navbar items */}
+
+
         <div className="hidden  md:flex gap-5">
-
           <div>
-
-
             <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white hover:text-indigo-600">
                 <Link to='/'>
@@ -116,19 +142,21 @@ const Header = () => {
                   Blogs</Link>
               </li>
 
+              {user === null ? <Link to='/login' className="py-2 rounded-3xl px-5 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
+                Login
+              </Link>
+                : <Link
+                  onClick={handleLogOut}
+                  className="py-2 rounded-3xl px-4 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
+                  LogOut
+                </Link>
+              }
+
             </ul>
           </div>
 
           <div>
-            {user === null ? <Link to='/login' className="py-2 rounded-3xl px-5 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
-              Login
-            </Link>
-              : <Link
-                onClick={handleLogOut}
-                className="py-2 rounded-3xl px-4 text-white bg-[#3848f1] hover:bg-indigo-700 shadow">
-                LogOut
-              </Link>
-            }
+
           </div>
         </div>
       </div>

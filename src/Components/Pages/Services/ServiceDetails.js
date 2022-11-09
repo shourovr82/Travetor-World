@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaArrowRight, FaBackspace, FaPlus, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
+import useSiteTitle from '../../../Hooks/useSiteTitle';
 import Reviews from './Reviews/Reviews';
 
 const ServiceDetails = () => {
@@ -13,6 +14,7 @@ const ServiceDetails = () => {
   const email = user?.email;
   const img = user?.photoURL;
   const authorName = user?.displayName;
+  useSiteTitle('Service Details')
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?serviceName=${title}`)
       .then(res => res.json())
@@ -60,17 +62,16 @@ const ServiceDetails = () => {
           <div className="grid  grid-cols-1 items-start gap-8 md:grid-cols-2">
 
 
-            <div className="sticky top-0">
+            <div className="md:sticky top-0">
               <div className='pb-3'>
                 <img src={picture} className='w-full rounded-md h-[350px]' alt="" />
               </div>
-
-
               <strong
                 className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
               >
                 Pre Order
               </strong>
+
 
               <div className="mt-8 mb-3 flex justify-between">
                 <div className="max-w-[35ch]">
@@ -79,7 +80,6 @@ const ServiceDetails = () => {
                   </h1>
 
                   <p className="mt-0.5 text-sm">Duraration : {Duration}</p>
-
                   <div className="mt-2 -ml-0.5 flex items-center gap-3">
                     <div className='flex '>
                       <FaStar className='text-yellow-500' />
@@ -106,15 +106,19 @@ const ServiceDetails = () => {
             </div>
 
 
+            {/* reviews section */}
 
-
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
-              <h2 className='text-3xl text-center font-bold '>Customer Reviews...</h2>
+            <div className=" grid md:block grid-cols-1 md:grid-cols-2 gap-4 ">
+              <h2 className='text-3xl text-center pb-3+ font-bold '>Customer Reviews...</h2>
 
               <section className='bg-blue-50 rounded-md shadow-[#2e0a7217] shadow-lg'>
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
 
                   <div className="flex items-center justify-between ">
+
+
+
+                    {/*  reviews total and title for service */}
                     {
                       reviews.length ? <>
                         <div className='flex items-center'>
@@ -145,7 +149,6 @@ const ServiceDetails = () => {
 
                     {/* The button to open modal */}
 
-
                     <div>
                       {user ? <>
                         <label htmlFor="my-modal-6" className="py-2 justify-end rounded-3xl px-6 flex text-white items-center gap-2 bg-[#3848f1] hover:bg-indigo-700 shadow cursor-pointer">    Add Review <FaPlus /></label>
@@ -164,7 +167,6 @@ const ServiceDetails = () => {
                               <form
                                 onSubmit={handleAddReview}
                                 className='flex flex-col gap-3'>
-
                                 <input onBlur={handleInputBlur} type="text"
                                   name='ratings' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner' placeholder='Your Ratings' required />
                                 <input
@@ -185,19 +187,18 @@ const ServiceDetails = () => {
                         </div></> : <>
                         <h2 className='text-lg border px-3 rounded py-2'>Login to add Review <br /> <Link to='/login' className='text-blue-400 text-lg flex  gap-2 items-center  font-semibold'>Login Here  <FaArrowRight className='text-sm mt-1' />
                         </Link></h2>
-
                       </>}
                     </div>
 
-                  </div>
-                  <div className='grid grid-cols-1 gap-5 mt-3'>
+                    {/*  get all reviews for specific service */}
 
+                  </div>
+                  <div className='grid grid-cols-1 gap-5  mt-3'>
                     {reviews.length ?
                       reviews.map(review => <Reviews
                         key={review._id}
                         review={review}
                       ></Reviews>)
-
                       :
                       <></>
                     }
@@ -207,7 +208,6 @@ const ServiceDetails = () => {
 
             </div>
           </div >
-
 
 
         </div >

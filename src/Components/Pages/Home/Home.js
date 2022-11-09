@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useSiteTitle from '../../../Hooks/useSiteTitle';
 import Banner from './Banner';
 
 const Home = () => {
-  const [services, setServices] = useState([])
+  const [services, setServices] = useState([]);
+  useSiteTitle('HOME')
 
   useEffect(() => {
     fetch('http://localhost:5000/servicesHome')
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setServices(data)
       })
   }, [])
@@ -30,9 +31,8 @@ const Home = () => {
           </p>
         </div>
 
-
         <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-
+          {/*  all services  */}
           {
             services.map((service, key) => (
               <div key={key} className="card card-compact  bg-base-100 shadow-xl">
@@ -57,20 +57,17 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-
-
-
-
             ))
           }
 
-        </div >
 
+
+
+        </div >
         <div className='flex justify-center py-10'>
           <button
             className="group relative inline-block overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring"
-            href="/download"
-          >
+            href="/download">
             <span
               className="absolute inset-x-0 bottom-0 h-[2px] bg-[#3848f1] transition-all group-hover:h-full group-active:bg-indigo-500"
             ></span>
@@ -85,9 +82,9 @@ const Home = () => {
               See All Services
             </Link>
           </button>
-
         </div>
         <div>
+
           <section>
             <div className="max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
               <div
@@ -324,6 +321,7 @@ const Home = () => {
           </section>
         </div>
         <div>
+
           <section className="bg-white">
             <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
               <div className="mx-auto max-w-3xl text-center">
@@ -377,10 +375,7 @@ const Home = () => {
           </section>
 
         </div>
-
       </section>
-
-
     </div>
   );
 };
