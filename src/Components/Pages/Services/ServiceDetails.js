@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaArrowRight, FaBackspace, FaPlus, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
@@ -42,6 +43,7 @@ const ServiceDetails = () => {
       .then(res => res.json())
       .then(data => {
         setReviews([data, ...reviews])
+        toast.success('Successfully Added Your Review')
         event.target.reset();
       })
   }

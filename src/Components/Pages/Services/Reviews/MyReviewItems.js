@@ -1,18 +1,24 @@
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaBackspace, FaEdit, FaPlus, FaStar } from 'react-icons/fa';
 import { AuthContext } from '../../../../AuthContexts/AuthProvider';
 
-const MyReviewItems = ({ review }) => {
+const MyReviewItems = ({ review, setReviews }) => {
   const [newReview, setNewReview] = useState({})
   const { user } = useContext(AuthContext);
   const { message, title, ratings, img, authorName } = review;
   const email = user?.email;
+
+  //  handle delete review
   const handleDeleteReview = (details) => {
     fetch(`http://localhost:5000/deleteReview/${details._id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        toast.success('Successfully Deleted Your Review')
+      })
   }
 
   const handleUpdateReview = event => {

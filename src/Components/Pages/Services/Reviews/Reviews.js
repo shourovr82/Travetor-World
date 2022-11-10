@@ -36,8 +36,8 @@ const Reviews = ({ review }) => {
           <footer className="mt-4 flex justify-between">
             <div className='flex items-center justify-between gap-3'>
               <div className='flex items-center gap-3'>
-                <img className='w-[30px] rounded-full' src={img ? img : 'https://i.ibb.co/9pTrT1y/images.png'} alt="" />
-                <p className="text-xs text-gray-500">Author : {authorName ? authorName : 'Anonymous'}</p>
+                <img className='w-[30px] rounded-full' src={img ? img : 'https://i.ibb.co/xscgpJP/202-2024580-png-file-profile-icon-vector-png.jpg'} alt="" />
+                <p className="text-xs text-gray-500">Author : {authorName === '' ? authorName : 'Anonymous'}</p>
               </div>
 
             </div>

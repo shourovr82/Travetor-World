@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FaArrowRight } from 'react-icons/fa';
 import useSiteTitle from '../../../../Hooks/useSiteTitle';
 
@@ -16,7 +17,8 @@ const AddService = () => {
     const ratings = form.ratings.value;
     const about = form.details.value;
     const picture = form.photoUrl.value;
-    const newData = { price, Duration, about, picture, ratings, title }
+    const date = new Date().toLocaleString();
+    const newData = { price, picture, title, about, Duration, ratings, date }
     fetch('http://localhost:5000/addService', {
       method: 'POST',
       headers: {
@@ -25,7 +27,11 @@ const AddService = () => {
       body: JSON.stringify(newData)
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        form.reset();
+        toast.success('Congratulations ! your Service Added Successfull')
+        console.log(data);
+      })
   }
 
 
@@ -33,24 +39,24 @@ const AddService = () => {
   return (
     <div>
       <section className="bg-gray-100">
-        <h2 className='text-center pt-12 font-bold text-xl'>Add  a New Service ...</h2>
+        <h2 className='text-center pt-12 font-bold text-2xl'>Add  a New Service ...</h2>
 
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid items-center grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
             <div className="lg:col-span-2 lg:py-12">
-              <p className="max-w-xl text-lg">
-                At the same time, the fact that we are wholly owned and totally
-                independent from manufacturer and other group control gives you
-                confidence that we will only recommend what is right for you.
-              </p>
+              <div className=''>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d95206.47128584987!2d90.42086240655664!3d23.811535061334293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1668054487491!5m2!1sen!2sbd" width="500" height="400" className='mt-2   rounded-xl shadow-xl  shadow-slate-300' title='map' allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                <p className='text-blue-700 font-semibold  font-sm mt-4'>Select Your Place</p>
+              </div>
 
               <div className="mt-8">
-                <a href="/" className="text-2xl font-bold text-pink-600">
-                  0151 475 4450
-                </a>
+                <p>Need Help ?</p>
+                <p className="text-2xl font-bold text-pink-800">
+                  +8801317441769
+                </p>
 
                 <address className="mt-2 not-italic">
-                  282 Kevin Brook, Imogeneborough, CA 58517
+
                 </address>
               </div>
             </div>
@@ -99,7 +105,8 @@ const AddService = () => {
                       className="w-full rounded-lg border border-blue-300 p-3 text-sm"
                       placeholder="Ratings"
                       required
-                      type="text"
+                      type="number"
+                      max={5}
                       name='ratings'
                       id="ratings"
                     />

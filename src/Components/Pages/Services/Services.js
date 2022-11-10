@@ -28,7 +28,7 @@ const Services = () => {
 
   return (
     <div>
-      <section className="mt-12 mx-auto px-4 max-w-screen-xl lg:px-8">
+      <section className="mt-12 mb-10 mx-auto px-4 max-w-screen-xl lg:px-8">
 
 
         <div className="text-center">
@@ -65,7 +65,7 @@ const Services = () => {
 
                 </figure>
                 <div className="card-body">
-                  <h2 className="card-title">{service.title}!</h2>
+                  <h2 className="card-title">{service.title}</h2>
                   <p>{service.about ? service.about.slice(0, 100) : service.about}</p>
 
 

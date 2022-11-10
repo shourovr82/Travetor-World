@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../AuthContexts/AuthProvider';
 import useSiteTitle from '../../../../Hooks/useSiteTitle';
 import MyReviewItems from './MyReviewItems';
@@ -16,15 +17,15 @@ const MyReviews = () => {
     })
       .then(res => {
         if (res.status === 401 || res.status === 403) {
+          toast.error(`Sorry  you have ${res.statusText} Access. Login again`)
           handleSignOut();
         }
-        return res.json()
+        return res.json();
       })
       .then(data => {
-        console.log(data);
         setReviews(data)
       })
-  }, [user?.email])
+  }, [user?.email, reviews])
 
 
   return (
@@ -37,6 +38,7 @@ const MyReviews = () => {
           reviews.map(review => (
             <MyReviewItems
               key={review._id}
+              setReviews={setReviews}
               review={review}
             ></MyReviewItems>
           )) : <><h2 className='text-center text-2xl font-semibold text-gray-500'>You havent added any reviews</h2></>
