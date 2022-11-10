@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
 import './Header.css'
 import siteLogo from '../../../Assets/sitelogo.png'
+import toast from 'react-hot-toast';
 
 const Header = () => {
   const [state, setState] = useState(false);
   const { user, handleSignOut } = useContext(AuthContext)
 
-  const navigation = [
-    { title: "Home", path: "/" },
-    { title: "Services", path: "/services" },
-    { title: "Reviews", path: "/reviews" },
-  ]
-
   const handleLogOut = () => {
     handleSignOut()
-      .then(result => { })
-      .catch(err => console.log(err))
+      .then(result => {
+        toast.success('Logout Successfull')
+      })
+      .catch(err => {
+        console.log(err)
+        toast.error(err.message)
+      })
   }
 
 

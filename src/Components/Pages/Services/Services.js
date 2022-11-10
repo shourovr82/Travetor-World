@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight, FaStar } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useSiteTitle from '../../../Hooks/useSiteTitle';
 import spinner from '../../../Assets/spinner.svg'
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+
+
+
 const Services = () => {
   const [services, setServices] = useState([]);
   useSiteTitle('Services');
-
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
 
   useEffect(() => {
     fetch("http://localhost:5000/services")

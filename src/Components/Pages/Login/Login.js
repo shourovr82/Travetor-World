@@ -14,6 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || '/';
 
+  // login
   const handleSubmitLogin = (event) => {
     event.preventDefault();
     setLoading(true);
@@ -22,7 +23,6 @@ const Login = () => {
     const password = form.password.value;
 
     //  handle login with email and password
-
     handleLogin(email, password)
       .then(result => {
         const user = result?.user;
@@ -48,7 +48,6 @@ const Login = () => {
           })
       })
       .catch(e => {
-        console.log(e)
         setLoading(false)
         toast.error(e.message.slice(15, 100))
       })
@@ -81,7 +80,6 @@ const Login = () => {
       })
 
       .catch(e => {
-        console.log(e)
         toast.error(e.message.slice(15, 100))
         setLoading(false)
       })

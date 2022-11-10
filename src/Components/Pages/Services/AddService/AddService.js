@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import useSiteTitle from '../../../../Hooks/useSiteTitle';
 
 const AddService = () => {
-
+  // set title
   useSiteTitle('Add Service')
 
   const handleSubmitService = event => {
@@ -29,8 +29,7 @@ const AddService = () => {
       .then(res => res.json())
       .then(data => {
         form.reset();
-        toast.success('Congratulations ! your Service Added Successfull')
-        console.log(data);
+        toast.success('Congratulations ! your Service Added Successfull');
       })
   }
 

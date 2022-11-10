@@ -16,7 +16,6 @@ const MyReviewItems = ({ review, setReviews }) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         toast.success('Successfully Deleted Your Review')
       })
   }
@@ -24,7 +23,6 @@ const MyReviewItems = ({ review, setReviews }) => {
   const handleUpdateReview = event => {
     event.preventDefault();
     const url = `http://localhost:5000/userReview/${newReview._id}`
-    console.log(url);
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -33,7 +31,9 @@ const MyReviewItems = ({ review, setReviews }) => {
       body: JSON.stringify(newReview)
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        toast.success('Review Successfully Updated')
+      })
   }
 
 

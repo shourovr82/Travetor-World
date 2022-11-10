@@ -24,7 +24,6 @@ const ServiceDetails = () => {
       .then(res => res.json())
       .then(data => {
         setReviews(data)
-        console.log(data);
       })
   }, [title])
 
@@ -64,6 +63,9 @@ const ServiceDetails = () => {
 
 
 
+
+
+
   return (
     <div>
       <section>
@@ -88,7 +90,7 @@ const ServiceDetails = () => {
                     {title}
                   </h1>
 
-                  <p className="mt-0.5 text-sm">Duraration : {Duration}</p>
+                  <p className="mt-0.5 text-sm">Duration : {Duration}</p>
                   <div className="mt-2 -ml-0.5 flex items-center gap-3">
                     <div className='flex '>
                       <FaStar className='text-yellow-500' />
@@ -189,14 +191,16 @@ const ServiceDetails = () => {
                                 </div>
                               </form>
                             </div>
-
                           </div>
-
-                        </div></> : <>
-                        <h2 className='text-lg border px-3 rounded py-2'>Login to add Review <br /> <Link to='/login' className='text-blue-400 text-lg flex  gap-2 items-center  font-semibold'>Login Here  <FaArrowRight className='text-sm mt-1' />
-                        </Link></h2>
-                      </>}
+                        </div></>
+                        :
+                        <>
+                          <Link
+                            className='text-lg border px-3 rounded py-2'>Login to add Review <br /> <p to='/login' className='text-blue-400 text-lg flex  gap-2 items-center  font-semibold'>Login Here  <FaArrowRight className='text-sm mt-1' />
+                            </p></Link>
+                        </>}
                     </div>
+
 
                     {/*  get all reviews for specific service */}
 
