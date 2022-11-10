@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../AuthContexts/AuthProvider';
 import useSiteTitle from '../../../../Hooks/useSiteTitle';
 import MyReviewItems from './MyReviewItems';
+import spinner from '../../../../Assets/spinner.svg'
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -34,6 +35,8 @@ const MyReviews = () => {
 
       <div className='grid grid-cols-1 gap-5 w-11/12 md:w-3/4 mx-auto py-10 mt-3 '>
 
+
+
         {reviews.length ?
           reviews.map(review => (
             <MyReviewItems
@@ -44,7 +47,6 @@ const MyReviews = () => {
           )) : <><h2 className='text-center text-2xl font-semibold text-gray-500'>You havent added any reviews</h2></>
         }
       </div>
-
     </div >
   );
 };

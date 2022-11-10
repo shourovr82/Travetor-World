@@ -1,0 +1,5 @@
+.error-bg {
+  background-image: url(../../../Assets/errorpage.png);
+  background-size: cover;
+  height: 100vh;
+}
