@@ -24,7 +24,7 @@ const Home = () => {
 
 
   return (
-    <div className=''>
+    <div >
       <Banner></Banner>
       <section className="mt-12 mx-auto px-4 max-w-screen-xl lg:px-8">
         <div id='latest' className="text-center">

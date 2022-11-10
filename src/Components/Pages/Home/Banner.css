@@ -3,14 +3,4 @@
       #010c0f9f,
       #0002039c), url(../../../Assets//banner2.jpg);
   background-size: cover;
-  margin-top: -100px;
-  height: 105vh;
-}
-
-.banner-image-phone {
-  background-image: linear-gradient(to right,
-      #010c0f9f,
-      #0002039c), url(../../../Assets//banner2.jpg);
-  background-size: cover;
-  height: 100vh;
 }

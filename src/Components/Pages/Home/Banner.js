@@ -4,7 +4,7 @@ import './Banner.css'
 
 const Banner = () => {
   return (
-    <section className="banner-image-phone md:banner-image text-white">
+    <section className="banner-image md:mt-[-100px] md:h-[100vh] h-[100vh] text-white">
       <div
         className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
       >
