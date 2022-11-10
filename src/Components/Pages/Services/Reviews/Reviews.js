@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 const Reviews = ({ review }) => {
   const { message, authorName, ratings, img, title, date } = review;
   return (
-    <div className="mx-auto p-3 rounded-md shadow-lg max-w-screen-xl md:px-4  border sm:px-6 lg:px-8 w-full">
+    <div className="mx-auto bg-gray-100 p-3 rounded-md shadow-lg max-w-screen-xl md:px-4  border sm:px-6 lg:px-8 w-full">
 
       <div className="gap-x-16 gap-y-12 lg:grid-cols-2">
         <h2 className='mb-3 text-sm text-gray-400'>Service  : <span className='font-semibold'>

@@ -14,7 +14,7 @@ const Home = () => {
   useSiteTitle('HOME')
 
   useEffect(() => {
-    fetch('http://localhost:5000/servicesHome')
+    fetch('https://travetor-world-server.vercel.app/servicesHome')
       .then(res => res.json())
       .then(data => {
         setServices(data)
@@ -24,7 +24,7 @@ const Home = () => {
 
 
   return (
-    <div>
+    <div className=''>
       <Banner></Banner>
       <section className="mt-12 mx-auto px-4 max-w-screen-xl lg:px-8">
         <div id='latest' className="text-center">

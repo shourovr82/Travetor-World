@@ -10,7 +10,7 @@ const MyReviews = () => {
   useSiteTitle('My Reviews')
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myreview?email=${user?.email}`, {
+    fetch(`https://travetor-world-server.vercel.app/myreview?email=${user?.email}`, {
       headers: {
         authorization: `Travetor ${localStorage.getItem('Travetor Token')}`
       }

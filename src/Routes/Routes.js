@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/services/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/serviceDetails/${params.id}`),
+        loader: ({ params }) => fetch(`https://travetor-world-server.vercel.app/serviceDetails/${params.id}`),
         element: <ServiceDetails></ServiceDetails>
       },
       {

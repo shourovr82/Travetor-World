@@ -19,7 +19,7 @@ const AddService = () => {
     const picture = form.photoUrl.value;
     const date = new Date().toLocaleString();
     const newData = { price, picture, title, about, Duration, ratings, date }
-    fetch('http://localhost:5000/addService', {
+    fetch('https://travetor-world-server.vercel.app/addService', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -43,7 +43,7 @@ const AddService = () => {
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid items-center grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
             <div className="lg:col-span-2 lg:py-12">
-              <div className=''>
+              <div className='hidden md:block'>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d95206.47128584987!2d90.42086240655664!3d23.811535061334293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1668054487491!5m2!1sen!2sbd" width="500" height="400" className='mt-2   rounded-xl shadow-xl  shadow-slate-300' title='map' allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 <p className='text-blue-700 font-semibold  font-sm mt-4'>Select Your Place</p>
               </div>

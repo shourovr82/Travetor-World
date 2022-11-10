@@ -6,12 +6,12 @@ import { AuthContext } from '../../../../AuthContexts/AuthProvider';
 const MyReviewItems = ({ review, setReviews }) => {
   const [newReview, setNewReview] = useState({})
   const { user } = useContext(AuthContext);
-  const { message, title, ratings, img, authorName } = review;
+  const { message, title, ratings, img, date, authorName } = review;
   const email = user?.email;
 
   //  handle delete review
   const handleDeleteReview = (details) => {
-    fetch(`http://localhost:5000/deleteReview/${details._id}`, {
+    fetch(`https://travetor-world-server.vercel.app/deleteReview/${details._id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -22,7 +22,7 @@ const MyReviewItems = ({ review, setReviews }) => {
 
   const handleUpdateReview = event => {
     event.preventDefault();
-    const url = `http://localhost:5000/userReview/${newReview._id}`
+    const url = `https://travetor-world-server.vercel.app/userReview/${newReview._id}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -50,20 +50,26 @@ const MyReviewItems = ({ review, setReviews }) => {
 
   return (
     <div className="mx-auto py-5 bg-blue-50 pb-3 rounded-md shadow-lg max-w-screen-xl px-4  border border-[#2812f30c] sm:px-2 lg:px-8 w-full">
-      <h2 className='text-sm text-gray-400'>Service  : <span className='font-semibold'>
+      <h2 className='text-sm text-gray-400 text-center'>Service  : <span className='font-semibold'>
         {title}
       </span></h2>
-      <div className=" gap-x-16 md:flex grid  justify-between items-center md:gap-y-12 gap-y-5 lg:grid-cols-2">
+      <div className="  md:flex grid  justify-between items-center md:gap-y-12 gap-y-5 lg:grid-cols-2">
 
         <blockquote>
           <div>
-            <header className="sm:flex sm:items-center">
-              <div className="-ml-1 flex">
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-yellow-400' />
-                <FaStar className='text-gray-400' />
+            <header className=" ">
+              <div className="-ml-1 flex items-center ">
+                <div className='flex'>
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-yellow-400' />
+                  <FaStar className='text-gray-400' />
+                </div>
+                <div>
+                  <p className='ml-4 font-bold'> Rating : {ratings}</p>
+                </div>
+
               </div>
             </header>
             <p className="mt-2 w-4/5 text-gray-700">
@@ -78,14 +84,14 @@ const MyReviewItems = ({ review, setReviews }) => {
               <img className='w-[30px] rounded-full' src={img ? img : 'https://i.ibb.co/9pTrT1y/images.png'} alt="" />
               <p className="text-xs text-gray-500">Author Name : {authorName}</p>
             </div>
-            <p className='text-xs text-gray-400'>12th January, 2024</p>
+            <p className='text-xs text-gray-400 '>{date}</p>
           </footer>
         </blockquote>
         <div className='flex md:flex-col  justify-center gap-3  items-center'>
 
           {/* update or edit button */}
 
-          <label title='Edit Review' htmlFor="my-modal-6" className="py-2  font-bold rounded-3xl px-4 bg-white  hover:text-white hover:border-[#fff0] border-[#1b70dfb0] hover:bg-[#3848f1]   items-center btn-outline btn shadow">
+          <label title='Edit Review' htmlFor="my-modal-6" className="py-2  font-bold rounded-3xl px-4   hover:text-white hover:border-[#fff0] border-[#1b70dfb0] hover:bg-[#3848f1]   items-center btn-outline btn shadow">
             <FaEdit className='text-xl' />
           </label>
           <div>

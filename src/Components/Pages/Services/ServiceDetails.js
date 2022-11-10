@@ -20,7 +20,7 @@ const ServiceDetails = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceName=${title}`)
+    fetch(`https://travetor-world-server.vercel.app/reviews?serviceName=${title}`)
       .then(res => res.json())
       .then(data => {
         setReviews(data)
@@ -32,7 +32,7 @@ const ServiceDetails = () => {
 
   const handleAddReview = event => {
     event.preventDefault();
-    fetch('http://localhost:5000/postReview', {
+    fetch('https://travetor-world-server.vercel.app/postReview', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -78,7 +78,7 @@ const ServiceDetails = () => {
                 <img src={picture} className='w-full rounded-md h-[350px]' alt="" />
               </div>
               <strong
-                className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
+                className="rounded-full border border-blue-600 bg-blue-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
               >
                 Pre Order
               </strong>
@@ -122,7 +122,7 @@ const ServiceDetails = () => {
             <div className=" grid md:block grid-cols-1 md:grid-cols-2 gap-4 ">
               <h2 className='text-3xl text-center pb-3+ font-bold '>Customer Reviews...</h2>
 
-              <section className='bg-blue-50 rounded-md shadow-[#2e0a7217] shadow-lg'>
+              <section className='bg-slate-200 mt-4 rounded-md shadow-[#0a34722a] shadow-lg'>
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
 
                   <div className="flex items-center justify-between ">
@@ -177,8 +177,8 @@ const ServiceDetails = () => {
                               <form
                                 onSubmit={handleAddReview}
                                 className='flex flex-col gap-3'>
-                                <input onBlur={handleInputBlur} type="text"
-                                  name='ratings' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner' placeholder='Your Ratings' required />
+                                <input onBlur={handleInputBlur} type="number"
+                                  name='ratings' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner' max={5} placeholder='Your Ratings' required />
                                 <input
                                   onBlur={handleInputBlur} type="text" required
                                   name='message' className='rounded placeholder:italic placeholder:text-blue-500 px-10 py-3 placeholder:text-lg   border bg-slate-50 shadow-inner'
@@ -195,9 +195,13 @@ const ServiceDetails = () => {
                         </div></>
                         :
                         <>
-                          <Link
-                            className='text-lg border px-3 rounded py-2'>Login to add Review <br /> <p to='/login' className='text-blue-400 text-lg flex  gap-2 items-center  font-semibold'>Login Here  <FaArrowRight className='text-sm mt-1' />
-                            </p></Link>
+                          <div className='border rounded-md p-3'>
+                            <Link to='/login'
+                              className='font-semibold text-slate-500  rounded py-2'>Login to add Review <br /> <p className='text-blue-400 text-lg flex  gap-2 items-center  font-semibold underline underline-offset-4'>Login Here  <FaArrowRight className='text-sm mt-1' />
+                              </p></Link>
+
+                          </div>
+
                         </>}
                     </div>
 
@@ -205,7 +209,7 @@ const ServiceDetails = () => {
                     {/*  get all reviews for specific service */}
 
                   </div>
-                  <div className='grid grid-cols-1 gap-5  mt-3'>
+                  <div className='grid  grid-cols-1 gap-5  mt-3'>
                     {reviews.length ?
                       reviews.map(review => <Reviews
                         key={review._id}
