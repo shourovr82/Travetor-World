@@ -4,7 +4,7 @@ import './Banner.css'
 
 const Banner = () => {
   return (
-    <section className="banner-image md:mt-[-100px] md:h-[100vh] h-[100vh] text-white">
+    <section className="banner-image md:mt-[-100px] md:h-[105vh] h-[100vh] text-white">
       <div
         className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
       >
@@ -12,7 +12,7 @@ const Banner = () => {
           <h1
             className="bg-gradient-to-r from-[#2466e9] via-blue-500 to-purple-700 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl uppercase"
           >
-            Traveling with a companion
+            Travelling with a companion
 
             <span className="sm:block pb-4 ">can give you peace of mind </span>
           </h1>

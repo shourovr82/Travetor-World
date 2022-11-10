@@ -24,12 +24,6 @@ const Services = () => {
   }, [])
 
 
-
-
-
-
-
-
   return (
     <div>
       <section className="mt-12 mb-10 mx-auto px-4 max-w-screen-xl lg:px-8">

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaArrowRight, FaBackspace, FaPlus, FaStar } from 'react-icons/fa';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContexts/AuthProvider';
 import useSiteTitle from '../../../Hooks/useSiteTitle';
@@ -75,7 +76,16 @@ const ServiceDetails = () => {
 
             <div className="md:sticky top-0">
               <div className='pb-3'>
-                <img src={picture} className='w-full rounded-md h-[350px]' alt="" />
+
+                <PhotoProvider>
+                  <PhotoView src={picture} >
+                    <img src={picture} className='w-full rounded-md h-[350px]' alt="" />
+                  </PhotoView>
+                </PhotoProvider>
+
+
+
+
               </div>
               <strong
                 className="rounded-full border border-blue-600 bg-blue-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
