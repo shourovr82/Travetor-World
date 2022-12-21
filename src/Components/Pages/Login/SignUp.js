@@ -49,8 +49,27 @@ const SignUp = () => {
     loginWithGoogle()
       .then(result => {
         const user = result.user;
-        setLoading(false)
-        navigate(from, { replace: true });
+        const currentUser = {
+          email: user.email
+        }
+        fetch('https://travetor-world-server.vercel.app/jwt', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+        })
+          .then(res => res.json())
+          .then(data => {
+            // set token to localstorage
+            localStorage.setItem('Travetor Token', data.token)
+            setLoading(false)
+            toast.success(`Welcome ${user?.displayName ? user.displayName : ''} , You have Successfully Logged In`)
+            navigate(from, { replace: true });
+          })
+
+
+
       })
       .catch(e => console.log(e))
   }
@@ -101,16 +120,21 @@ const SignUp = () => {
             onSubmit={handleCreateAccount}
             className='flex flex-col md:mt-20 gap-5 md:gap-10'>
             <div className='flex justify-around'>
+
               <input type="text" className='w-2/5 px-2 py-2 bg-transparent border-b rounded  focus:outline-indigo-700 focus:text-white text-slate-400' name="firstName" id="" placeholder='First Name' />
+
               <input type="text" className='w-2/5 px-2 py-2 bg-transparent border-b focus:outline-indigo-700 focus:text-white text-slate-400' name="lastName" id="" placeholder=' Your last Name' />
+
             </div>
 
             <div className='flex justify-around'>
               <input type="text" className='w-full mx-5 md:mx-10 px-2 rounded py-2 bg-transparent border-b focus:outline-indigo-700 focus:text-white text-slate-400' name="photoURL" id="" placeholder='Your Photo Link' />
             </div>
 
-            <div className='flex flex-col gap-6 md:gap-2 justify-around mx-5'>
+            <div className='flex md:flex-row flex-col gap-6 md:gap-2 justify-around md:mx-0 mx-5'>
+
               <input type="email" className='md:w-2/5 px-2 rounded py-2 bg-transparent border-b focus:outline-indigo-700 focus:text-white text-slate-400' name="email" id="" placeholder='Type Your Email' />
+
               <input type="password" className='md:w-2/5 px-2 py-2 bg-transparent border-b rounded focus:outline-indigo-700 focus:text-white text-slate-400' name="password" id="" placeholder='Type your Password' />
             </div>
             <div className=' md:flex gap-10 items-center justify-between mx-10'>

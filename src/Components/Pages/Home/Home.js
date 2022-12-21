@@ -7,6 +7,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import TouristSport from './TouristSport';
 import TrustedClient from './TrustedClient';
+import Testimonial from './Testimonial';
 
 
 const Home = () => {
@@ -117,6 +118,7 @@ const Home = () => {
 
           <TrustedClient></TrustedClient>
           {/*  section for trusted clients */}
+          <Testimonial></Testimonial>
 
 
         </div>
